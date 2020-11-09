@@ -4,7 +4,4 @@ public class Factory {
     public static Translator createGermanTranslator(){
         return new GermanTranslator();
     }
-    public static Translator createEnglishTranslator(){
-        return new EnglishTranslator();
-    }
 }

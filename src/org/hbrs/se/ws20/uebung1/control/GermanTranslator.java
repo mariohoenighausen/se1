@@ -14,7 +14,7 @@ public class GermanTranslator implements Translator {
 	 */
 	public String translateNumber( int number ) { 
 		// [ihr Source Code aus Übung 1-2]
-		Map<Integer, String> map = new HashMap<Integer, String>();
+		Map<Integer, String> map = new HashMap<Integer, String>(10);
 		map.put(1,"eins");
 		map.put(2,"zwei");
 		map.put(3,"drei");
@@ -25,10 +25,8 @@ public class GermanTranslator implements Translator {
 		map.put(8,"acht");
 		map.put(9,"neun");
 		map.put(10,"zehn");
-
-		return map.getOrDefault(number," ");
+		return map.getOrDefault(number,"Übersetzung der Zahl " + number +" nicht möglich " + Translator.version);
 	}
-		
 	/**
 	 * Objektmethode der Klasse GermanTranslator zur Ausgabe einer Info.
 	 */

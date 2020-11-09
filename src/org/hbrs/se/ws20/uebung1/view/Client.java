@@ -1,8 +1,13 @@
 package org.hbrs.se.ws20.uebung1.view;
 import org.hbrs.se.ws20.uebung1.control.Translator;
 import org.hbrs.se.ws20.uebung1.control.Factory;
-import org.hbrs.se.ws20.uebung1.control.GermanTranslator;
 
+import java.io.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Map;
 public class Client {
 
 	/*
@@ -14,10 +19,8 @@ public class Client {
 		// aufgerufen werden.
 		// Strenge Implementierung gegen das Interface Translator gewuenscht!
 		Translator translator = Factory.createGermanTranslator();//new GermanTranslator();
-		//maybe something about the preferred language translation which could be gained by the user
-		String res = translator.translateNumber(1);
-		/*System.out.println("Das Ergebnis der Berechnung: " +
-				"[das Ergebnis an dieser Stelle]" );*/
+		String res = translator.translateNumber(aNumber);
+
 		System.out.println("Das Ergebnis der Berechnung: " + res);
 	}
 }
