@@ -2,12 +2,6 @@ package org.hbrs.se.ws20.uebung1.view;
 import org.hbrs.se.ws20.uebung1.control.Translator;
 import org.hbrs.se.ws20.uebung1.control.Factory;
 
-import java.io.*;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Map;
 public class Client {
 
 	/*

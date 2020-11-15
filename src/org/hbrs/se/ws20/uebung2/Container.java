@@ -19,26 +19,11 @@ public class Container {
         }*/
         memberList.add(member);
     }
-
-    public static void main(String[] args) {
-        Container c = new Container();
-        try{
-            c.addMember(new Factory(0));
-            c.addMember(new Factory(1));
-            c.dump();
-            System.out.println(c.size());
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
     public String deleteMember(Integer id){
             for(Member m : memberList){
                 if(m.getID().equals(id)){
-                    Member x = m;
                     memberList.remove(m);
-
-                    return "" + x.toString();
+                    return "" + m.toString();
                 }
             }
             return "" + -1;

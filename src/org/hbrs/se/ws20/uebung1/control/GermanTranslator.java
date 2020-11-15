@@ -1,7 +1,5 @@
 package org.hbrs.se.ws20.uebung1.control;
 
-import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +12,7 @@ public class GermanTranslator implements Translator {
 	 */
 	public String translateNumber( int number ) { 
 		// [ihr Source Code aus Übung 1-2]
-		Map<Integer, String> map = new HashMap<Integer, String>(10);
+		Map<Integer, String> map = new HashMap<>(10);
 		map.put(1,"eins");
 		map.put(2,"zwei");
 		map.put(3,"drei");

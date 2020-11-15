@@ -1,7 +1,7 @@
 package org.hbrs.se.ws20.uebung2;
 
 public class Factory implements Member{
-    private Integer id;
+    private final Integer id;
 
     public Factory(int id){
         this.id = id;

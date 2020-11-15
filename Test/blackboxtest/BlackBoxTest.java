@@ -36,7 +36,7 @@ public class BlackBoxTest {
         try {
             System.setOut(ps);
             Scanner sc = new Scanner(new File("output.txt"));
-            List<String> outScan = new LinkedList<String>();
+            List<String> outScan = new LinkedList<>();
             while (sc.hasNext()) {
                 outScan.add(sc.nextLine());
             }

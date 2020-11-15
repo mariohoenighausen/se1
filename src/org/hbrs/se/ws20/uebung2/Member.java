@@ -7,6 +7,6 @@ public interface Member {
     // --> Primärschlüssel zur Unterscheidung aller Member-Objekte
     Integer getID();
 
-    public String toString();
+    String toString();
 
 }
