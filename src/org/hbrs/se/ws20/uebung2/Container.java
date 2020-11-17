@@ -10,7 +10,7 @@ public class Container {
     }
     public void addMember( Member member )throws ContainerException{
         for (Member m : memberList) {
-            if (m.getID().equals((member.getID()))) {
+            if(m.getID().equals((member.getID()))) {
                 throw new ContainerException("Das Member-Objekt mit der ID " + member.getID() + " ist bereits vorhanden!");
             }
         }
@@ -28,6 +28,9 @@ public class Container {
             }
             return "" + -1;
             //String gibt keinen StackTrace aus bzw. keine genaue Fehlererkennung möglich
+        // wird nicht als Fehler anerkannt, sondern als valide Stringrückgabe
+        //Behandlung wie bei einer Exception durch catch nicht möglich
+        //nur mit mehr Kontrollfluss z.B. einem If statement, dass den String prüft sind bessere behandlung möglich aber umständlich
     }
     public void dump(){
         for(Member m :memberList){

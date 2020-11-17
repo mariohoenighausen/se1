@@ -40,4 +40,7 @@ public class GermanTranslator implements Translator {
 		this.date = date;
 	}
 
+	public static void main(String[] args) {
+
+	}
 }
