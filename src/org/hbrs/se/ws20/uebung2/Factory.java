@@ -1,6 +1,8 @@
 package org.hbrs.se.ws20.uebung2;
 
-public class Factory implements Member{
+import java.io.Serializable;
+
+public class Factory implements Member, Serializable {
     private final Integer id;
 
     public Factory(int id){
