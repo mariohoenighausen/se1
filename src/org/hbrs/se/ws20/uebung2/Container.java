@@ -10,20 +10,32 @@ import java.util.List;
 
 public class Container {
     private LinkedList<Member> memberList;
-    private final static Container instance = new Container();
+    private static Container instance; //TODO unnötiger Speicheraufwand, sollte zur Überprüfung in der getInstance Methode initialisiert werden.
     private PersistenceStrategyStream<Member> pSS;
+    private static final Object lock = new Object();
+    /*static { // ein Static-block, wird ausgeführt, wenn eine Klasse geladen wird
 
+    }*/
     private Container(){
         memberList = new LinkedList<>();
     }
-    public void setPersistenceStrategyStream(String filePathLoad,String filePathStore){
+    public void setPersistenceStrategyStream(String filePathLoad,String filePathStore){//TODO: Übergabe einer Strategie (Mongo, oder andere), anstatt Dateipfaden
         this.pSS = new PersistenceStrategyStream<>(filePathLoad,filePathStore);
     }
     public PersistenceStrategy<Member> getPersistenceStrategyStream(){
         return pSS;
     }
-    public static Container getInstance(){
+    /*public static Container getInstance(){
             return Container.instance;
+    }*/
+
+    public static synchronized Container getInstance(){
+        synchronized (lock) { // nur ein "Client" kann zur selben Zeit darauf zugreifen.
+            if (instance == null) {
+                instance = new Container();
+            }
+        }
+        return instance;
     }
     public void store() throws PersistenceException {
         if(pSS == null){

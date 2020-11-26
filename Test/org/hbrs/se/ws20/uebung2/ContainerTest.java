@@ -97,14 +97,21 @@ class ContainerTest {
             Container c1 = Container.getInstance();
             c.load();
         }
-        catch(Exception ex){
-
+        catch(PersistenceException pEX){
+            assertEquals(PersistenceException.ExceptionType.LoadFailure,pEX.getExceptionTypeType());
         }
         assertEquals(3,c.size());
     }
     @Test
     public void store(){
         assertThrows(PersistenceException.class,()-> c.store());
+        try{
+            c.store();
+        }
+        catch(PersistenceException pEX){
+            assertEquals(PersistenceException.ExceptionType.SaveFailure,pEX.getExceptionTypeType());
+        }
+
     }
     @Test
     public void getCurrentList(){
@@ -112,3 +119,4 @@ class ContainerTest {
         assertEquals(c.size(),m.size());
     }
 }
+//TODO: assertSame() um die Identität zu testen.

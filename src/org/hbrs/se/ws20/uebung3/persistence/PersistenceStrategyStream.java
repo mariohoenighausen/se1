@@ -66,7 +66,7 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
         isReading = false;
         openConnection();
         try{
-                ous.writeObject(member);
+                ous.writeObject(member); // TODO: abspeichern in eine .ser Datei, anstatt einer Text
         }
         catch(Exception ex){
             throw new PersistenceException(PersistenceException.ExceptionType.SaveFailure,"SaveFailure");
