@@ -8,6 +8,7 @@ public class Main {
         Container c = Container.getInstance();
         InputDialog id = new InputDialog();
         id.splashMessage();
+
         c.setPersistenceStrategyStream(new PersistenceStrategyStream<UserStory>());
         while(true){
             id.commandPrompt();
