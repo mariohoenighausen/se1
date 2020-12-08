@@ -1,28 +1,26 @@
-package org.hbrs.se.ws20.uebung3.persistence;
+package org.hbrs.se.ws20.uebung4.model;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
-public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Member> {
+public class PersistenceStrategyStream<UserStory> implements PersistenceStrategy<UserStory> {
     private FileInputStream fis;
     private ObjectInputStream ois;
     private FileOutputStream fos;
     private ObjectOutputStream ous;
     private boolean isReading;
     private boolean hasRead;
-    private String loadFile;
-    private String storeFile;
-
-    public PersistenceStrategyStream(String filepathLoad, String filepathStore) {
-        loadFile = filepathLoad;
-        storeFile = filepathStore;
+    public PersistenceStrategyStream() {
     }
 
     @Override
     public void openConnection() throws PersistenceException {
         if(isReading) {
             try {
-                fis = new FileInputStream(loadFile);
+                fis = new FileInputStream("data.ser");
                 ois = new ObjectInputStream(fis);
             } catch (Exception ex) {
                 throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable,"s");
@@ -30,7 +28,7 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
         }
         else {
             try {
-                fos = new FileOutputStream(storeFile);
+                fos = new FileOutputStream("data.ser");
                 ous = new ObjectOutputStream(fos);
             } catch (Exception ex) {
                 throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable,"s");
@@ -60,7 +58,7 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
     /**
      * Method for saving a list of Member-objects to a disk (HDD)
      */
-    public void save(List<Member> member) throws PersistenceException  {
+    public void save(List<UserStory> member) throws PersistenceException {
 
         // Writes objects to the output stream
         isReading = false;
@@ -82,8 +80,8 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
      * Method for loading a list of Member-objects from a disk (HDD)
      * Some coding examples come for free :-)
      */
-    public List<Member> load() throws PersistenceException  {
-        List<Member> newListe =  null;
+    public List<UserStory> load() throws PersistenceException {
+        List<UserStory> newListe =  null;
         Object obj = null;
         isReading = true;
         openConnection();
