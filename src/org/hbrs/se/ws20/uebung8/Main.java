@@ -1,0 +1,7 @@
+package org.hbrs.se.ws20.uebung8;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
