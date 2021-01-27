@@ -6,6 +6,16 @@ public class GlobalConfig {
         this.vc = vc;
     }
     public void changeVerificationStrategy(){
-
+        VerificationStrategy vs = null;
+        if (IfrsStrategy.isAvailable()){
+            vs = new IfrsStrategy();
+        }
+        else if(SwissGaapFerStrategy.isAvailable()){
+            vs = new SwissGaapFerStrategy();
+        }
+        else if (USGaapStrategy.isAvailable()){
+            vs = new USGaapStrategy();
+        }
+        vc.setVerificationStrategy(vs);
     }
 }
